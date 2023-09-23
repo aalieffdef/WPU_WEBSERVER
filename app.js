@@ -1,10 +1,21 @@
 const express = require('express')
 const expressLayout = require('express-ejs-layouts')
-const app = express()
+const morgan = require('morgan')
 const port = 3000
+const app = express()
+
+app.use((req, res, next) => {
+  console.log('Time:', Date.now())
+  next()
+})
+
+app.use(express.static("./public"))
 
 app.set("view engine", 'ejs')
+
+// MORGAN
 app.use(expressLayout)
+app.use(morgan('dev'))
 
 app.get('/', (req, res) => {
   res.render('index', {
@@ -27,11 +38,9 @@ app.get('/about', (req, res) => {
   })
 })
 
-
-
 app.use('/', (req, res) => {
   res.status(404)
-  res.send(`<h1>Halaman tidak ditemukan</h1>`)
+  res.send(`404`)
 })
 
 app.listen(port, () => {
