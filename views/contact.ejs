@@ -7,13 +7,13 @@
   <%= msg %>
 </div>
 <% } %>
-<table class="w-[50%]">
+<table class="w-[56%]">
   <thead class="bg-slate-100 border-b-2 border-slate-300 text-left rounded">
     <tr>
       <th class="w-9 p-3 text-sm tracking-wide">#</th>
       <th class="w-50 p-3 text-sm tracking-wide">Nama</th>
       <th class="p-3 text-sm tracking-wide">No HP</th>
-      <th class="w-36 p-3 text-sm tracking-wide">Opsi</th>
+      <th class="w-48 p-3 text-sm tracking-wide">Opsi</th>
     </tr>
   </thead>
 
@@ -25,7 +25,10 @@
     <td class="p-3 text-sm -tracking-wide">
       <a href="/contact/<%= contact.nama %>"><button
           class="bg-emerald-500 px-2 py-1 text-gray-100 text-xs font-normal rounded-lg">Detail</button></a>
-      <a href=""><button class="bg-red-500 px-2 py-1 text-gray-100 text-xs font-normal rounded-lg">Hapus</button></a>
+      <a href="/contact/edit/<%= contact.nama %>"><button
+          class="bg-yellow-500 px-2 py-1 text-gray-100 text-xs font-normal rounded-lg">Edit</button></a>
+      <a onclick="return confirm(`Yakin hapus?`)" href="/contact/delete/<%= contact.nama %>"><button
+          class="bg-red-500 px-2 py-1 text-gray-100 text-xs font-normal rounded-lg">Hapus</button></a>
     </td>
   </tr>
   <% }) %>

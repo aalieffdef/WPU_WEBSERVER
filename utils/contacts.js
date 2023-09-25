@@ -44,9 +44,28 @@ const cekDuplikat = (nama) => {
   return contacts.find((contact) => contact.nama === nama)
 }
 
+const deleteContact = (nama) => {
+  const contacts = loadKontak()
+  const filterContact = contacts.filter((contact) => contact.nama != nama)
+
+  saveContact(filterContact)
+}
+
+const updateContact = (kontakBaru) => {
+  const contacts = loadKontak()
+  const filterContact = contacts.filter((contact) => contact.nama !== kontakBaru.oldName)
+
+  delete kontakBaru.oldName
+  filterContact.push(kontakBaru)
+
+  saveContact(filterContact)
+}
+
 module.exports = {
   loadKontak,
+  deleteContact,
   cekDuplikat,
   findContact,
-  addContact
+  addContact,
+  updateContact
 }
